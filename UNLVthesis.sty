@@ -31,7 +31,7 @@
 %This defines the look of the first page of a chapter.
 \def\@makechapterhead#1{%
   \vspace*{40\p@}%Space above.
-  {\parindent \z@ \raggedright \normalfont
+  {\parindent \z@ \raggedright \LARGE\bf
     \ifnum \c@secnumdepth >\m@ne
       \if@mainmatter
         \centering \@chapapp\space \thechapter%Center "Chapter 1".
@@ -53,7 +53,7 @@
 \def\@makeschapterhead#1{%
   \vspace*{40\p@}%This is space above
   {\parindent \z@ \raggedright
-    \normalfont
+    \LARGE
     \interlinepenalty\@M
     \centering  #1\par\nobreak 
         %This is where chapter* headings are centered.
@@ -64,7 +64,7 @@
 \renewcommand\section{\@startsection {section}{1}{0pt}%An irrelevant option (because of \centering below.
                                    {\baselineskip}%the beforeskip
                                    {1pt}%the afterskip
-                                   {\centering\normalfont}}%This is where the section headings are centered.
+                                   {\centering\Large\bf}}%This is where the section headings are centered.
 \renewcommand \thesection {} %This means there are no section numbers.
 %This defines the look of section entries in the table of contents.
 \renewcommand\@dotsep{1.5}
@@ -152,16 +152,16 @@
 \setlength{\belowcaptionskip}{-\baselineskip}%Adjustment to get the above to work properly.
 
 %These commands adjust footnote parameters.
-\setlength{\footnotesep}{2\baselineskip}% Footnotes have doublespaces between them.
+\setlength{\footnotesep}{1\baselineskip}% Footnotes have singlespaces between them.
 \addtolength{\skip\footins}{-\baselineskip}
-\renewcommand{\footnoterule}{\vspace*{\baselineskip}\noindent\rule{2in}{.5pt}\vspace*{-.5\baselineskip}}
+\renewcommand{\footnoterule}{\vspace*{\baselineskip}\noindent\rule{2in}{.5pt}\vspace*{-.1\baselineskip}}
 %This was stolen from the setspace.sty package by Geoffrey Tobin.  
 %It makes the footnotes single spaced and normalsize.
 \long\def\@footnotetext#1{%
   \insert\footins{%
 % GT:  Next line added.  Hook desired here!
-    \def\baselinestretch {1}%\setspace@singlespace}%My only modification.
-    \reset@font\normalsize %UNLV style wants footnotes in normal font size.
+    \def\baselinestretch {1}%\setspace@singlespace}%Makes a single space between each footnote.
+    \reset@font\footnotesize %UNLV has removed guidelines regarding footnote size.
     \interlinepenalty\interfootnotelinepenalty
     \splittopskip\footnotesep
     \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
@@ -172,7 +172,7 @@
     }%
     \color@begingroup
       \@makefntext{%
-        \rule\z@\footnotesep\ignorespaces#1\@finalstrut\strutbox}%
+        \rule\z@\footnotesep\ignorespaces#1\@finalstrut\strutbox}%Adjusts the box so that the space between the line and the first footnote aligns.
     \color@endgroup}}
 
 

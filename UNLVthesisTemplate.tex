@@ -8,66 +8,104 @@
 % current (as of June 2016) UNLV Graduate College formatting  %
 % requirements is taken directly from the September 17, 2015  %
 % "Organization of the Thesis and Dissertation Compiled       %
-% Manuals."                                                   % 
+% Manuals."  This template has been revised by Kenneth Retzl  %
+% and Kate Eugenis as they wrote their dissertations.         %
+% Particular thanks is due to Kenneth Retzl for fixing the    %
+% page numbers on landscape pages to be in line with UNLV     %
+% Grad College Standards.                                     % 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-%                R E V I S I O N   H I S T O R Y              %
-%                                                             %
-% 6/29/2016: Updates to language in the sample chapters.      %
-%	     Extended discussion of how to organize the       %
-%	     bibliography using natbib. Replaced original CV  %
-%            page with a CV template using the article class. %
-% 6/21/2016: Overhaul of the original Baragar template to     %
-%            meet UNLV Graduate College requirements as per   %
-%            the September 17, 2015 "Organization of the      %
-%            Thesis and Dissertation Compiled Manuals" here   %
-%            www.unlv.edu/sites/default/files/page_files/27/  %
-%            GradCollege-ThesisDissertation-Manual.pdf        %
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%                R E V I S I O N   H I S T O R Y                %
+%                                                               %
+% 12/8/2017: Updates to footnote style, headers for sections    %
+%             prior to Chapter 1, changes in the look of        %
+%             sections and sub sections. Modified the location  %
+%             of page numbers so as to not overlap the foot-    %
+%             notes.  Finally, adding packages to put page      %
+%             numbers on landscape pages on the correct edge.   %
+%             Updates to sample chapters to show the table      %
+%             and figure code in action. Other slight           %
+%             modifications to improve looks and                %
+%             functionality - too many to name here.            %
+% 6/29/2016: Updates to language in the sample chapters.        %
+%	     Extended discussion of how to organize the             %
+%	     bibliography using natbib. Replaced original CV        %
+%            page with a CV template using the article class.   %
+% 6/21/2016: Overhaul of the original Baragar template to       %
+%            meet UNLV Graduate College requirements as per     %
+%            the September 17, 2015 "Organization of the        %
+%            Thesis and Dissertation Compiled Manuals" here     %
+%            www.unlv.edu/sites/default/files/page_files/27/    %
+%            GradCollege-ThesisDissertation-Manual.pdf          %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 \documentclass[oneside,12pt]{book}
-    % The option oneside is required for UNLV theses.
-    % Font can be 11 or 12 point only
+% The option oneside is required for UNLV theses.
+% Font can be 11 or 12 point only
 \usepackage{amsthm,amssymb,amsmath,latexsym,graphicx} 
-	% Optional packages.
+% Optional packages.
 \usepackage{setspace,UNLVthesis} 
-	% Required packages.  
+% Required packages.  
 \usepackage[round]{natbib}
-	% This loads the natbib package, which is a powerful bibliography formatting system.
+% This loads the natbib package, which is a powerful bibliography formatting system.
 \bibpunct[, ]{(}{)}{;}{a}{}{,}
-	% This command sets the formatting of the citations. Adjust as needed for your style.
+% This command sets the formatting of the citations. Adjust as needed for your style.
 \usepackage{url}
 \urlstyle{same}
-	% The URL package is used to format the URLs in the document. This way, you don't have to "escape" the characters that appear in the URL. You'll just type \url{www.myurl.com}. The second command makes sure that they appear in the same font as the rest of the document.
+% The URL package is used to format the URLs in the document. This way, you don't have to "escape" the characters that appear in the URL. You'll just type \url{www.myurl.com}. The second command makes sure that they appear in the same font as the rest of the document.
 \usepackage{pdfpages}
 \usepackage{booktabs, caption}	
-	% This package formats the tables correctly.
+% This package formats the tables correctly.
 \usepackage{rotating}
+%\usepackage{float}
 \pagestyle{unlv} 
-	% This is defined in UNLVthesis.sty. 
-
+% This is defined in UNLVthesis.sty. 
+\setlength{\footskip}{40pt}
+\usepackage{longtable}
+\usepackage{tablefootnote}
+% Allows me to add footnotes to tables.
+\usepackage{threeparttable}
 \usepackage[english]{babel} 
 % This is for the dummy text in the chapters. You won't need this.
+\usepackage{dcolumn}
+\usepackage{adjustbox}
 \usepackage{blindtext}
+\usepackage{amssymb}
 % This is also for demonstration purposes only. You should remove all commands related to this package when you insert your own text. They all begin with \blind or \Blind.
+\usepackage{rotating, floatpag, fancyhdr}
 \usepackage[capitalise, noabbrev]{cleveref}
 % This package lets you use the \cref command to make cross references. Don't load packages after this one; this one needs to go in last.
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}  
 \newtheorem{lemma}[theorem]{Lemma}
-	% These define the format and numbering of theorem like environments. Corollaries and Lemmas are numbered as theorems. These may be commented out when theorems are not used.
+% These define the format and numbering of theorem like environments. Corollaries and Lemmas are numbered as theorems. These may be commented out when theorems are not used.
 
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem*{introduction}{Introduction}
 \newtheorem*{conclusion}{Conclusion}
-	% This environment is not in italics, like theorems are.These define the format and numbering of definition like environments. The * means it is unnumbered. Again, these can be commented out when theorems are not used
+% This environment is not in italics, like theorems are.These define the format and numbering of definition like environments. The * means it is unnumbered. Again, these can be commented out when theorems are not used
 
 % Put definitions here.  
-
+	
+	% This creates the page style for a landscape page
+	\fancypagestyle{floatpage}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\fancyfoot[C]{\makebox[\textwidth][r]{
+				\smash{\raisebox{\dimexpr\footskip+.5\textheight}{\rotatebox{90}{\thepage}}}}}
+	}
+	
+	% This creates a page style for a portrait page
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\fancyfoot[C]{\thepage}
+	}
+	
 \begin{document}
 
 \pagenumbering{roman}
